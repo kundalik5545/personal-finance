@@ -9,7 +9,7 @@ export const metadata = {
 const PrivacyPolicy = () => {
   return (
     <>
-      <main className="max-w-3xl mx-auto p-6 text-gray-800 dark:text-gray-200">
+      <main className=" mx-auto text-gray-800 dark:text-gray-200">
         <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
         <p className="mb-4">Effective Date: [25 Feb 2025]</p>
         <p className="mb-4">
