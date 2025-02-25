@@ -1,8 +1,23 @@
 ---
+
 title: "What is Next.js and How to Create a Blog Using Next.js"
 date: "25 Feb 2025"
 author: "Kundalik Jadhav"
----
+
+## Table of contents
+
+1. [What is Next.js?](#what-is-nextjs)
+2. [Why Choose Next.js?](#why-choose-nextjs)
+3. [How to Create a Blog Using Next.js](#how-to-create-a-blog-using-nextjs)
+
+- [Step 1: Set Up Your Development Environment](#step-1-set-up-your-development-environment)
+- [Step 2: Create a New Next.js Project](#step-2-create-a-new-nextjs-project)
+- [Step 3: Create Blog Pages](#step-3-create-blog-pages)
+- [Step 4: Create Blog Posts](#step-4-create-blog-posts)
+- [Step 5: Add Navigation](#step-5-add-navigation)
+- [Step 6: Run Your Project](#step-6-run-your-project)
+
+4. [Conclusion](#conclusion)
 
 ## What is Next.js?
 
