@@ -89,7 +89,7 @@ const BlogPost = async ({ params }) => {
     return (
       <div className="container mx-auto max-w-5xl text-foreground bg-background pt-5">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">{data.title}</h1>
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-gray-500 mb-2">
+        <div className="flex sm:flex-row gap-2 sm:gap-4 text-gray-500 mb-2">
           <Badge className="p-1">By {data.author || "Admin"}</Badge>
           <p className="text-sm">
             {new Date(data.date)
