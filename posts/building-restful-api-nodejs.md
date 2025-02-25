@@ -4,7 +4,7 @@ title: "Building a RESTful API with Node.js"
 date: "2025-02-18"
 author: "Kundalik Jadhav"
 description: "HTML, or HyperText Markup Language, is the standard language used to create web pages. It provides the structure of a webpage, allowing you to define elements such as headings, paragraphs, links,"
-image: "/images/blogs/b1.jpg"
+image: "/images/blogs/b3.jpg"
 category: "Web Development"
 slug: "building-restful-api-nodejs"
 ---

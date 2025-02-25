@@ -13,6 +13,9 @@ import rehypeSlug from "rehype-slug";
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { Calendar } from "lucide-react";
 
 // Generate dynamic metadata for each blog post
 export async function generateMetadata({ params }) {
@@ -86,12 +89,31 @@ const BlogPost = async ({ params }) => {
         {/* Content Wrapper */}
         <div className="w-full">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">{data.title}</h1>
-
           {/* Author and Date */}
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-gray-500 mb-2">
-            <p className="text-sm italic">By {data.author}</p>
-            <p className="text-sm">{data.date}</p>
+            <Badge className="p-1">By- {data.author}</Badge>
+            <p className="text-sm">
+              {new Date(data.date)
+                .toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "short",
+                  year: "numeric",
+                })
+                .replace(/ /g, " ")}
+            </p>
           </div>
+        </div>
+
+        {/* cover image */}
+        <div className="">
+          <Image
+            src={data.image}
+            alt={`${data.title}`}
+            width={800}
+            height={450}
+            className="w-full h-auto object-cover rounded-lg"
+            priority
+          />
         </div>
 
         {/* Render Markdown/HTML Content */}
