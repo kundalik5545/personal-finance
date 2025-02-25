@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Random Coders | Latest Blogs",
+  title: `${process.env.NEXT_PUBLIC_WEBSITE_NAME} | Latest Blogs`,
   description:
     "Explore the latest blogs on web development, coding projects, and open-source contributions. Learn, Build, and Collaborate with Random Coders!",
   keywords:
