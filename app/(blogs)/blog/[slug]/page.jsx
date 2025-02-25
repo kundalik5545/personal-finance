@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
-import { blogs } from "@/data/blogs";
 import rehypeDocument from "rehype-document";
 import rehypeFormat from "rehype-format";
 import rehypeStringify from "rehype-stringify";
@@ -15,50 +14,53 @@ import { transformerCopyButton } from "@rehype-pretty/transformers";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Calendar } from "lucide-react";
+
+// Fetch all blog slugs dynamically
+export async function generateStaticParams() {
+  const postsDirectory = path.join(process.cwd(), "posts");
+  const filenames = fs.readdirSync(postsDirectory);
+  return filenames.map((filename) => ({
+    slug: filename.replace(/\.md$/, ""),
+  }));
+}
 
 // Generate dynamic metadata for each blog post
 export async function generateMetadata({ params }) {
-  const slug = params.slug; // No need for `await`, `params.slug` is a string
+  const slug = params.slug;
 
-  if (!slug) {
-    return notFound();
-  }
+  if (!slug) return notFound();
 
-  const blog = blogs.find((b) => b.slug === slug);
+  const filePath = path.join(process.cwd(), "posts", `${slug}.md`);
+  if (!fs.existsSync(filePath)) return notFound();
 
-  if (!blog) {
-    return {
-      title: "Not Found",
-      description: "Blog post not found",
-    };
-  }
+  const fileContent = fs.readFileSync(filePath, "utf-8");
+  const { data } = matter(fileContent);
 
   return {
-    title: blog.title,
-    description: blog.description.slice(0, 150),
+    title: data.title || "Blog Post",
+    description:
+      data.description?.slice(0, 150) ||
+      "Read our latest blog posts on finance, loans, and credit cards.",
     keywords:
-      blog.keywords ||
-      "coding blogs, web development, programming, open-source, software development",
+      data.keywords ||
+      "personal finance, loans, credit cards, budgeting, investment",
     openGraph: {
-      title: blog.title,
-      description: blog.description.slice(0, 200),
-      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/blog/${blog.slug}`,
-      images: [{ url: blog.image }],
+      title: data.title || "Finance Blog",
+      description:
+        data.description?.slice(0, 200) ||
+        "Get the latest insights on finance and money management.",
+      url: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/blog/${slug}`,
+      images: data.image ? [{ url: data.image }] : [],
     },
-    canonical: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/blog/${blog.slug}`,
+    canonical: `${process.env.NEXT_PUBLIC_WEBSITE_URL}/blog/${slug}`,
   };
 }
 
 const BlogPost = async ({ params }) => {
   const slug = params.slug;
-
-  // Define the full path to the Markdown file
   const filePath = path.join(process.cwd(), "posts", `${slug}.md`);
 
-  if (!fs.existsSync(filePath)) {
-    return notFound();
-  }
+  if (!fs.existsSync(filePath)) return notFound();
 
   try {
     const fileContent = fs.readFileSync(filePath, "utf-8");
@@ -85,38 +87,34 @@ const BlogPost = async ({ params }) => {
     const htmlContent = (await processor.process(content)).toString();
 
     return (
-      <div className="">
-        {/* Content Wrapper */}
-        <div className="w-full">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">{data.title}</h1>
-          {/* Author and Date */}
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-gray-500 mb-2">
-            <Badge className="p-1">By- {data.author}</Badge>
-            <p className="text-sm">
-              {new Date(data.date)
-                .toLocaleDateString("en-GB", {
-                  day: "2-digit",
-                  month: "short",
-                  year: "numeric",
-                })
-                .replace(/ /g, " ")}
-            </p>
+      <div className="container mx-auto max-w-5xl text-foreground bg-background pt-5">
+        <h1 className="text-3xl md:text-4xl font-bold mb-4">{data.title}</h1>
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-gray-500 mb-2">
+          <Badge className="p-1">By {data.author || "Admin"}</Badge>
+          <p className="text-sm">
+            {new Date(data.date)
+              .toLocaleDateString("en-GB", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+              })
+              .replace(/ /g, " ")}
+          </p>
+        </div>
+
+        {data.image && (
+          <div className="mb-4">
+            <Image
+              src={data.image}
+              alt={data.title}
+              width={800}
+              height={450}
+              className="w-full h-auto object-cover rounded-lg"
+              priority
+            />
           </div>
-        </div>
+        )}
 
-        {/* cover image */}
-        <div className="">
-          <Image
-            src={data.image}
-            alt={`${data.title}`}
-            width={800}
-            height={450}
-            className="w-full h-auto object-cover rounded-lg"
-            priority
-          />
-        </div>
-
-        {/* Render Markdown/HTML Content */}
         <div
           dangerouslySetInnerHTML={{ __html: htmlContent }}
           className="prose dark:prose-invert w-full"
