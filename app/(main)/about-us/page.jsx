@@ -1,7 +1,7 @@
 import React from "react";
 
 export const metadata = {
-  title: "About",
+  title: "About Us",
 };
 
 const AboutPage = () => {
@@ -14,21 +14,32 @@ const AboutPage = () => {
           {process.env.NEXT_PUBLIC_TAG_LINE}
         </p>
         <p className="mb-4">
-          A hub for developers seeking coding help, project ideas, and
-          collaboration opportunities. Our blog categorizes projects across
-          various domains, making it easy to find the right challenge for your
-          skill level. Whether you're a beginner or an experienced developer,
-          you can explore, contribute, and collaborate on open-source projects.
+          Welcome to <strong>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</strong>,
+          your go-to resource for{" "}
+          <strong>
+            personal finance insights, loan information, credit card guides, and
+            financial tools
+          </strong>
+          . We strive to simplify complex financial concepts and help you make
+          informed money decisions.
         </p>
         <p className="mb-4">
-          Join our <strong>community guide</strong>, where contributors can
-          discover projects, connect with like-minded developers, and enhance
-          their coding skills. Stay updated with best practices, tutorials, and
-          hands-on projects to sharpen your expertise.
+          Our blog features{" "}
+          <strong>
+            expert advice, financial calculators, and step-by-step guides
+          </strong>{" "}
+          to empower you with the knowledge to manage your money wisely. Whether
+          you're looking for the best loan options, credit card comparisons, or
+          investment strategies, we've got you covered.
         </p>
-
+        <p className="mb-4">
+          Explore our <strong>free financial tools and calculators</strong> to
+          estimate loans, interest rates, credit card rewards, and more. Stay
+          informed, take control of your finances, and build a secure financial
+          future with us.
+        </p>
         <p>By -</p>
-        <p>{process.env.NEXT_PUBLIC_WEBSITE_NAME}...</p>
+        <p>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</p>
         <p>Last Updated: 25 Feb 2025</p>
       </blockquote>
     </div>

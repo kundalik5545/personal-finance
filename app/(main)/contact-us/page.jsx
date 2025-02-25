@@ -15,39 +15,44 @@ const ContactUsPage = () => {
           {process.env.NEXT_PUBLIC_TAG_LINE}
         </p>
         <p className="mb-4">
-          A hub for developers seeking coding help, project ideas, and
-          collaboration opportunities. Our blog categorizes projects across
-          various domains, making it easy to find the right challenge for your
-          skill level. Whether you're a beginner or an experienced developer,
-          you can explore, contribute, and collaborate on open-source projects.
+          Have{" "}
+          <strong>
+            questions about loans, credit cards, or personal finance?
+          </strong>{" "}
+          We are here to help! Whether you're looking for the
+          <strong>
+            {" "}
+            best financial tools, loan comparisons, or investment strategies
+          </strong>{" "}
+          , our team is dedicated to providing{" "}
+          <strong>accurate, reliable, and up-to-date financial insights</strong>
+          .
         </p>
         <p className="mb-4">
-          Join our <strong>community guide</strong>, where contributors can
-          discover projects, connect with like-minded developers, and enhance
-          their coding skills. Stay updated with best practices, tutorials, and
-          hands-on projects to sharpen your expertise.
+          At <strong>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</strong>, we believe
+          in <strong>financial empowerment</strong>. Our mission is to simplify
+          complex financial topics so you can make informed decisions with
+          confidence.
         </p>
         <div>
-          <h2 className="text-2xl font-bold">To connect with us</h2>
-          <p>If you have any questions, feel free to reach out to us at:</p>
-          Email:{" "}
-          <Link
-            className="underline text-blue-500"
-            href={`mailto:${process.env.NEXT_PUBLIC_MAIL}`}
-            aria-label="Contact Admin via Email"
-          >
-            Contact Admin
-          </Link>
+          <h2 className="text-2xl font-bold">Get in Touch</h2>
+          <p>
+            If you have any questions, suggestions, or feedback, feel free to
+            reach out to us at:
+          </p>
+          <p>
+            Email:{" "}
+            <Link
+              className="underline text-blue-500"
+              href={`mailto:${process.env.NEXT_PUBLIC_MAIL}`}
+              aria-label="Contact via Email"
+            >
+              Contact Us
+            </Link>
+          </p>
         </div>
         <p className="pt-3">By -</p>
-        <p>{process.env.NEXT_PUBLIC_WEBSITE_NAME}...</p>
-        <Link
-          className="underline text-blue-500"
-          href={`mailto:${process.env.NEXT_PUBLIC_MAIL}`}
-          aria-label="Contact Admin via Email"
-        >
-          Contact Admin
-        </Link>
+        <p>{process.env.NEXT_PUBLIC_WEBSITE_NAME}</p>
       </div>
     </div>
   );
