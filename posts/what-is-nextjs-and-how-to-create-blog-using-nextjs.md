@@ -1,27 +1,25 @@
 ---
-
 title: "What is Next.js and How to Create a Blog Using Next.js"
 date: "25 Feb 2025"
 author: "Kundalik Jadhav"
-
-## Table of contents
-
-1. [What is Next.js?](#what-is-nextjs)
-2. [Why Choose Next.js?](#why-choose-nextjs)
-3. [How to Create a Blog Using Next.js](#how-to-create-a-blog-using-nextjs)
-
-- [Step 1: Set Up Your Development Environment](#step-1-set-up-your-development-environment)
-- [Step 2: Create a New Next.js Project](#step-2-create-a-new-nextjs-project)
-- [Step 3: Create Blog Pages](#step-3-create-blog-pages)
-- [Step 4: Create Blog Posts](#step-4-create-blog-posts)
-- [Step 5: Add Navigation](#step-5-add-navigation)
-- [Step 6: Run Your Project](#step-6-run-your-project)
-
-4. [Conclusion](#conclusion)
+---
 
 ## What is Next.js?
 
 Next.js is a powerful and flexible React framework that enables developers to build fast and user-friendly web applications. It is built on top of Node.js and offers features like server-side rendering, static site generation, and API routes, making it an excellent choice for building modern web applications. Next.js simplifies the development process by providing a robust set of tools and conventions, allowing developers to focus on writing code rather than configuring their environment.
+
+## Table of Contents
+
+- [What is Next.js?](#what-is-nextjs)
+- [Why Choose Next.js?](#why-choose-nextjs)
+- [How to Create a Blog Using Next.js](#how-to-create-a-blog-using-nextjs)
+  - [Step 1: Set Up Your Development Environment](#step-1-set-up-your-development-environment)
+  - [Step 2: Create a New Next.js Project](#step-2-create-a-new-nextjs-project)
+  - [Step 3: Create Blog Pages](#step-3-create-blog-pages)
+  - [Step 4: Create Blog Posts](#step-4-create-blog-posts)
+  - [Step 5: Add Navigation](#step-5-add-navigation)
+  - [Step 6: Run Your Project](#step-6-run-your-project)
+- [Conclusion](#conclusion)
 
 ## Why Choose Next.js?
 
